@@ -1,0 +1,254 @@
+#content-post{
+    position: relative;
+    overflow: hidden;
+    padding: 75px 10%;
+    padding-top: 150px;
+    min-height: 650px;
+  }
+  #content-post p{
+    position: relative;
+    text-align: inherit;
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  #content-post.post p{
+    text-align: justify;
+  }
+  #content-post #cp ul li i{
+      margin-top: 5px;
+  }
+  #content-post #cp ul li p{
+      margin-top: 0px;
+  }
+  #title-post{
+    position: relative;
+    text-align: center;
+    margin-bottom: 25px;
+    z-index: 10;
+  }
+  #thumbnail{
+    position: relative;
+    display: flex;
+    margin-bottom: 25px;
+  }
+  #thumbnail img{
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    margin: auto;
+  }
+  h3, .container{
+    position: relative;
+  }
+  
+  /* comment */
+  #decor-post1{
+    position: absolute;
+    transform: translateY(-25px) translateX(-125px);
+    width: 240px;
+    height: 240px;
+    filter: blur(100px);
+    border-radius: 50%;
+  }
+  #decor-post2{
+    position: absolute;
+    transform: translateX(-50px);
+    width: 120px;
+    height: 120px;
+    filter: blur(75px);
+    border-radius: 50%;
+  }
+  #content-post #decor-post3{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    transform: rotate(-10deg) translateY(125px);
+    filter: blur(200px);
+  }
+  #decor-post4{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    /* transform: translateY(100px) translateX(125px); */
+    transform: translateX(125px);
+    width: 240px;
+    height: 240px;
+    filter: blur(150px);
+  }
+  #decor-post5{
+    position: absolute;
+    bottom: 0;
+    /* transform: translateY(125px) translateX(-275px); */
+    transform: translateX(-275px);
+    width: 240px;
+    height: 240px;
+    filter: blur(100px);
+    border-radius: 50%;
+  }
+  #decor-post6{
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-150px);
+    /*transform: translateY(250px) translateX(-150px);*/
+    width: 100px;
+    height: 100px;
+    filter: blur(100px);
+    border-radius: 50%;
+  }
+  #comment-post{
+    position: relative;
+    margin-top: 25px;
+  }
+  #comment-post #comments{
+    font-size: 20px;
+    border-radius: 10px;
+    padding: 5px 10px;
+    width: fit-content;
+    margin-bottom: 20px;
+    -webkit-box-shadow: -3px 3px 7.5px rgb(0, 0, 0, .35);
+    box-shadow: -3px 3px 7.5px rgb(0, 0, 0, .35);    
+  }
+  #tulis{
+    transform: translateY(15px);
+  }
+  #comment-post ol{
+    padding-left: 0;
+  }
+  #comment-post li{
+    list-style: none;
+  }
+  #comment-post .comment-body{
+    border: 1px solid black;
+    padding: 10px 25px;
+    border-radius: 25px;
+    margin: 10px 0;
+    width: fit-content;
+  }
+  #comment-post .comment-body cite.fn a,
+  #comment-post .comment-body .reply a{
+    color: black;
+    text-transform: capitalize;
+    text-decoration: none;
+    font-style: normal;
+  }
+  #comment-post .comment-body cite.fn a::after{
+    content: ' :';
+  }
+  #comment-post .comment-body .reply, #comment-post .form-submit{
+    display: flex;
+  }
+  #comment-post .comment-body .reply a{
+    font-size: 15px;
+    margin-left: auto;
+    color: #7F578A;
+  }
+  #comment-post .comment-body p{
+    margin: 0;
+  }
+  #comment-post .comment-body img,
+  #comment-post .comment-body span.says,
+  #comment-post .comment-body .comment-meta{
+    display: none;
+  }
+  #comment-post .children .comment-body{
+    border-radius: 0 25px 25px 25px;
+  }
+  #reply-title{
+    font-size: 24px;
+    margin-top: 25px;
+  }
+  #comment-post .logged-in-as{
+    z-index: 10;
+  }
+  #comment-post .logged-in-as *,
+  #comment-post .comment-notes *{
+    font-size: 18px;
+  }
+  #comment-post .logged-in-as a{
+    text-decoration: none;
+  }
+  #comment-post .logged-in-as a:hover, 
+  #comment-post .comment-body .reply a:hover{
+    text-decoration: underline;
+  }
+  #comment-post #commentform .comment-form-comment label,
+  #comment-post #commentform .comment-form-author label,
+  #comment-post #commentform .comment-form-email label,
+  #comment-post #commentform .comment-form-url label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  #comment-post #commentform .comment-form-cookies-consent,
+  #comment-post #commentform .comment-form-cookies-consent label{
+    display: flex;
+  }
+  #comment-post #commentform .comment-form-cookies-consent{
+    width: 75%;
+  }
+  #comment-post #commentform .comment-form-cookies-consent input{
+    margin: auto 10px;
+    margin-left: 0;
+  }
+  #comment-post #commentform input[type=text],
+  #comment-post #commentform .comment-form-comment textarea {
+    border: none;
+    width: 75%;
+    border-radius: 10px;
+    padding: 5px 10px;
+    -webkit-box-shadow: -3px 3px 7.5px rgb(0, 0, 0, .35);
+    box-shadow: -3px 3px 7.5px rgb(0, 0, 0, .35);    
+    outline: none;
+  }
+  #comment-post #commentform .comment-form-comment textarea{
+    resize: none;
+    position: relative;
+    z-index: 10;
+  }
+  #comment-post .form-submit #submit{
+    border: none;
+    margin-top: 10px;
+    margin-right: 25%;
+    margin-left: auto;
+    border-radius: 10px;
+    padding: 5px 10px;
+    -webkit-box-shadow: -3px 3px 7.5px rgb(0, 0, 0, .35);
+    box-shadow: -3px 3px 7.5px rgb(0, 0, 0, .35);    
+    outline: none;
+    color: white;
+  }
+  #pesan{
+    width: 150px;
+    position: absolute;
+    right: 25%;
+    transform: translateY(-100px);
+  }
+  /*@media (max-width: 991px) {
+      
+  }*/
+  @media (max-width: 900px) { 
+    #thumbnail img{
+      width: 100%;
+      height: fit-content;
+    }
+    #thumbnail.post img{
+      width: fit-content;
+      height: 300px;
+    }
+    #comment-post #commentform input[type=text],
+    #comment-post #commentform .comment-form-comment textarea,
+    #comment-post #commentform .comment-form-cookies-consent {
+      width: 100%;
+    }
+    #comment-post .form-submit #submit{
+      margin-right: 0%;
+    }
+  }
+  
+  .block-content{
+    pointer-events: none;
+  }
+  .block-content button{
+    color: grey;
+  }
