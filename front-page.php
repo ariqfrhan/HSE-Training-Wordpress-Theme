@@ -11,6 +11,7 @@ $training_query = new WP_Query(array(
     'meta_query'     => array(
         'relation' => 'OR',
         array('key' => '_hse_start_date', 'value' => wp_date('Y-m-d'), 'compare' => '>=', 'type' => 'DATE'),
+        array('key' => '_hse_start_date', 'value' => '', 'compare' => '='),
         array('key' => '_hse_start_date', 'compare' => 'NOT EXISTS'),
     ),
 ));

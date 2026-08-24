@@ -29,6 +29,10 @@ add_action('after_setup_theme', 'hse_theme_setup');
 
 function hse_enqueue_assets() {
     $version = wp_get_theme()->get('Version');
+    $measurement_id = 'G-P1C1L0ZS5J';
+    wp_enqueue_script('hse-google-tag', 'https://www.googletagmanager.com/gtag/js?id=' . $measurement_id, array(), null, false);
+    wp_script_add_data('hse-google-tag', 'async', true);
+    wp_add_inline_script('hse-google-tag', "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{$measurement_id}');", 'before');
     wp_enqueue_style('hse-bootstrap', get_theme_file_uri('/bootstrap/css/bootstrap.min.css'), array(), '5.3.0');
     wp_enqueue_style('hse-theme', get_stylesheet_uri(), array('hse-bootstrap'), $version);
     wp_enqueue_script('hse-bootstrap', get_theme_file_uri('/bootstrap/js/bootstrap.bundle.min.js'), array(), '5.3.0', true);
