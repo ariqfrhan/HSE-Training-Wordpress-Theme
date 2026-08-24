@@ -130,7 +130,7 @@ $article_query = new WP_Query(array(
                                 <div><dt>Lokasi</dt><dd><?php echo esc_html($location ? $location : 'Dikonfirmasi setelah pendaftaran'); ?></dd></div>
                                 <div><dt>Investasi</dt><dd><?php echo esc_html(hse_price_text($training_id)); ?></dd></div>
                             </dl>
-                            <a class="btn btn-primary" href="<?php the_permalink(); ?>">Detail dan daftar</a>
+                            <a class="btn btn-primary" href="<?php the_permalink(); ?>"><?php echo esc_html(get_post_meta($training_id, '_hse_status', true) === 'Segera Hadir' ? 'Detail dan daftar minat' : 'Detail dan daftar'); ?></a>
                         </article>
                     <?php endwhile; ?>
                 </div>

@@ -7,6 +7,7 @@
             $location = get_post_meta($training_id, '_hse_location', true);
             $duration = get_post_meta($training_id, '_hse_duration', true);
             $status = get_post_meta($training_id, '_hse_status', true);
+            $is_interest_only = $status === 'Segera Hadir';
             ?>
             <article class="container hse-container training-detail">
                 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="<?php echo esc_url(home_url('/')); ?>">Beranda</a><span>/</span><a href="<?php echo esc_url(get_post_type_archive_link('hse_training')); ?>">Jadwal</a></nav>
@@ -28,10 +29,10 @@
                     <div class="entry-content"><?php the_content(); ?></div>
                     <aside class="registration-panel" id="registration">
                         <p class="registration-status"><?php echo esc_html($status ? $status : 'Pendaftaran Dibuka'); ?></p>
-                        <h2>Daftar program ini</h2>
+                        <h2><?php echo esc_html($is_interest_only ? 'Daftar minat' : 'Daftar program ini'); ?></h2>
                         <?php $registration_status = isset($_GET['registration']) ? sanitize_key(wp_unslash($_GET['registration'])) : ''; ?>
                         <?php if ($registration_status === 'success') : ?>
-                            <div class="form-notice success" role="status">Pendaftaran diterima. Tim kami akan menghubungi Anda.</div>
+                            <div class="form-notice success" role="status"><?php echo esc_html($is_interest_only ? 'Minat Anda sudah diterima. Tim kami akan menghubungi Anda.' : 'Pendaftaran diterima. Tim kami akan menghubungi Anda.'); ?></div>
                         <?php elseif ($registration_status) : ?>
                             <div class="form-notice error" role="alert">Data belum dapat diproses. Periksa kembali nama, email, dan nomor telepon.</div>
                         <?php endif; ?>
@@ -50,7 +51,7 @@
                             <input id="company" name="company" type="text" maxlength="150" autocomplete="organization">
                             <label for="participants">Jumlah peserta</label>
                             <input id="participants" name="participants" type="number" min="1" max="500" value="1" required>
-                            <button class="btn btn-primary btn-lg" type="submit">Kirim pendaftaran</button>
+                            <button class="btn btn-primary btn-lg" type="submit"><?php echo esc_html($is_interest_only ? 'Kirim minat' : 'Kirim pendaftaran'); ?></button>
                             <p class="form-privacy">Data digunakan untuk memproses pendaftaran dan menghubungi Anda terkait program ini.</p>
                         </form>
                     </aside>
