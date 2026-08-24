@@ -63,7 +63,8 @@
                     <p class="article-meta"><?php echo esc_html(get_the_date()); ?><?php if (get_the_category_list(', ')) : ?> | <?php echo wp_kses_post(get_the_category_list(', ')); ?><?php endif; ?></p>
                     <h1><?php the_title(); ?></h1>
                     <?php if (has_excerpt()) : ?><p class="lead"><?php echo esc_html(get_the_excerpt()); ?></p><?php endif; ?>
-                    <?php if (has_post_thumbnail()) : ?><figure class="article-hero"><?php the_post_thumbnail('large', array('data-fallback' => get_theme_file_uri('/images/image5-1024x767.jpeg'))); ?></figure><?php endif; ?>
+                    <?php $article_image = get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>
+                    <?php if ($article_image) : ?><figure class="article-hero"><img src="<?php echo esc_url($article_image); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" width="1024" height="767"></figure><?php endif; ?>
                 </header>
                 <div class="entry-content"><?php the_content(); ?></div>
                 <nav class="post-navigation" aria-label="Artikel lainnya"><?php the_post_navigation(array('prev_text' => 'Sebelumnya: %title', 'next_text' => 'Berikutnya: %title')); ?></nav>
