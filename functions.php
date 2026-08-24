@@ -235,6 +235,15 @@ function hse_price_text($post_id) {
     return $price ? 'Rp ' . number_format_i18n($price, 0) : __('Hubungi kami', 'hse-training');
 }
 
+function hse_existing_thumbnail_url($post_id, $size) {
+    $thumbnail_id = get_post_thumbnail_id($post_id);
+    $file = $thumbnail_id ? get_attached_file($thumbnail_id) : '';
+    if (!$file || !file_exists($file)) {
+        return '';
+    }
+    return wp_get_attachment_image_url($thumbnail_id, $size);
+}
+
 function hse_whatsapp_url($message) {
     return 'https://wa.me/6285774001563?text=' . rawurlencode($message);
 }

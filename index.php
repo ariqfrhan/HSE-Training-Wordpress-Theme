@@ -11,7 +11,7 @@
                 <?php while (have_posts()) : the_post(); ?>
                     <article class="article-card">
                         <a class="article-image" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
-                            <?php $article_image = get_the_post_thumbnail_url(get_the_ID(), 'medium_large'); ?>
+                            <?php $article_image = hse_existing_thumbnail_url(get_the_ID(), 'medium_large'); ?>
                             <img src="<?php echo esc_url($article_image ? $article_image : get_theme_file_uri('/images/image5-1024x767.jpeg')); ?>" alt="" width="1024" height="767" loading="lazy">
                         </a>
                         <p class="article-meta"><?php echo esc_html(get_the_date()); ?></p>
