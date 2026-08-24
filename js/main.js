@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('img[data-fallback]').forEach(function (image) {
         function useFallback() {
             if (image.dataset.fallback && image.src !== image.dataset.fallback) {
+                image.removeAttribute('srcset');
+                image.removeAttribute('sizes');
                 image.src = image.dataset.fallback;
             }
         }
