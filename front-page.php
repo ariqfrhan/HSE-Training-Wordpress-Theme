@@ -186,7 +186,7 @@ $article_query = new WP_Query(array(
                         <article class="article-card">
                             <a class="article-image" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
                                 <?php if (has_post_thumbnail()) : ?>
-                                    <?php the_post_thumbnail('medium_large', array('loading' => 'lazy')); ?>
+                                    <?php the_post_thumbnail('medium_large', array('loading' => 'lazy', 'data-fallback' => get_theme_file_uri('/images/image5-1024x767.jpeg'))); ?>
                                 <?php else : ?>
                                     <img src="<?php echo esc_url(get_theme_file_uri('/images/image5-1024x767.jpeg')); ?>" alt="" width="1024" height="767" loading="lazy">
                                 <?php endif; ?>

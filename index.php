@@ -11,7 +11,7 @@
                 <?php while (have_posts()) : the_post(); ?>
                     <article class="article-card">
                         <a class="article-image" href="<?php the_permalink(); ?>" tabindex="-1" aria-hidden="true">
-                            <?php if (has_post_thumbnail()) { the_post_thumbnail('medium_large', array('loading' => 'lazy')); } ?>
+                            <?php if (has_post_thumbnail()) { the_post_thumbnail('medium_large', array('loading' => 'lazy', 'data-fallback' => get_theme_file_uri('/images/image5-1024x767.jpeg'))); } ?>
                         </a>
                         <p class="article-meta"><?php echo esc_html(get_the_date()); ?></p>
                         <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>

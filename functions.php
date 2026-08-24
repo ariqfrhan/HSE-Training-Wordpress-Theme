@@ -308,3 +308,20 @@ function hse_document_title_parts($parts) {
     return $parts;
 }
 add_filter('document_title_parts', 'hse_document_title_parts');
+
+function hse_front_page_seo_title($title) {
+    if (is_front_page()) {
+        return 'Pelatihan dan Sertifikasi K3 BNSP | HSE Training Indonesia';
+    }
+    return $title;
+}
+add_filter('wpseo_title', 'hse_front_page_seo_title');
+
+function hse_front_page_seo_description($description) {
+    if (is_front_page()) {
+        return 'Pelatihan dan sertifikasi K3 BNSP untuk individu dan perusahaan. Public training, in-house training, dan konsultasi K3 oleh PT Triyasa Mitra Solusi.';
+    }
+    return $description;
+}
+add_filter('wpseo_metadesc', 'hse_front_page_seo_description');
+add_filter('wpseo_opengraph_desc', 'hse_front_page_seo_description');
