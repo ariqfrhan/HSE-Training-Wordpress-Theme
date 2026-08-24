@@ -23,7 +23,7 @@
                     <div><span>Tanggal</span><strong><?php echo esc_html(hse_format_training_date($training_id)); ?></strong></div>
                     <div><span>Lokasi</span><strong><?php echo esc_html($location ? $location : 'Dikonfirmasi kemudian'); ?></strong></div>
                     <div><span>Durasi</span><strong><?php echo esc_html($duration ? $duration : 'Sesuai program'); ?></strong></div>
-                    <div><span>Investasi</span><strong><?php echo esc_html(hse_price_text($training_id)); ?></strong></div>
+                    <div><span>Promo Relaunch 2026</span><strong><?php echo esc_html(hse_price_text($training_id)); ?></strong></div>
                 </div>
                 <div class="training-content-grid">
                     <div class="entry-content"><?php the_content(); ?></div>

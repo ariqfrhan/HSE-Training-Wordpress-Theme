@@ -22,7 +22,7 @@ if (is_post_type_archive('hse_training')) {
                             <dl>
                                 <div><dt>Tanggal</dt><dd><?php echo esc_html(hse_format_training_date($training_id)); ?></dd></div>
                                 <div><dt>Lokasi</dt><dd><?php echo esc_html(get_post_meta($training_id, '_hse_location', true)); ?></dd></div>
-                                <div><dt>Investasi</dt><dd><?php echo esc_html(hse_price_text($training_id)); ?></dd></div>
+                                <div><dt>Promo Relaunch 2026</dt><dd><?php echo esc_html(hse_price_text($training_id)); ?></dd></div>
                             </dl>
                             <a class="btn btn-primary" href="<?php the_permalink(); ?>"><?php echo esc_html(get_post_meta($training_id, '_hse_status', true) === 'Segera Hadir' ? 'Detail dan daftar minat' : 'Detail dan daftar'); ?></a>
                         </article>

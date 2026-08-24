@@ -37,6 +37,25 @@ function hse_enqueue_assets() {
     wp_enqueue_style('hse-theme', get_stylesheet_uri(), array('hse-bootstrap'), $version);
     wp_enqueue_script('hse-bootstrap', get_theme_file_uri('/bootstrap/js/bootstrap.bundle.min.js'), array(), '5.3.0', true);
     wp_enqueue_script('hse-main', get_theme_file_uri('/js/main.js'), array(), $version, true);
+
+    $chat_trainings = array();
+    foreach (get_posts(array('post_type' => 'hse_training', 'post_status' => 'publish', 'posts_per_page' => 50, 'meta_key' => '_hse_start_date', 'orderby' => 'meta_value', 'order' => 'ASC')) as $training) {
+        $chat_trainings[] = array(
+            'title' => get_the_title($training),
+            'date' => hse_format_training_date($training->ID),
+            'location' => get_post_meta($training->ID, '_hse_location', true),
+            'price' => hse_price_text($training->ID),
+            'status' => get_post_meta($training->ID, '_hse_status', true),
+            'url' => get_permalink($training),
+        );
+    }
+    wp_localize_script('hse-main', 'hseChatData', array(
+        'trainings' => $chat_trainings,
+        'contacts' => array(
+            array('label' => 'WhatsApp 1', 'number' => '6285774001563'),
+            array('label' => 'WhatsApp 2', 'number' => '6285779051699'),
+        ),
+    ));
 }
 add_action('wp_enqueue_scripts', 'hse_enqueue_assets');
 
@@ -102,6 +121,7 @@ function hse_training_meta_box_render($post) {
         '_hse_certification' => array('label' => 'Sertifikasi', 'type' => 'select', 'options' => array('BNSP', 'KEMNAKER', 'Non-Sertifikasi')),
         '_hse_start_date'    => array('label' => 'Tanggal Mulai', 'type' => 'date'),
         '_hse_end_date'      => array('label' => 'Tanggal Selesai', 'type' => 'date'),
+        '_hse_schedule_text' => array('label' => 'Tanggal Pelaksanaan (teks)', 'type' => 'text'),
         '_hse_location'      => array('label' => 'Lokasi / Media', 'type' => 'text'),
         '_hse_duration'      => array('label' => 'Durasi', 'type' => 'text'),
         '_hse_price'         => array('label' => 'Harga', 'type' => 'number'),
@@ -137,7 +157,7 @@ function hse_save_training_meta($post_id) {
         return;
     }
 
-    $text_fields = array('_hse_certification', '_hse_start_date', '_hse_end_date', '_hse_location', '_hse_duration', '_hse_status');
+    $text_fields = array('_hse_certification', '_hse_start_date', '_hse_end_date', '_hse_schedule_text', '_hse_location', '_hse_duration', '_hse_status');
     foreach ($text_fields as $field) {
         if (isset($_POST[$field])) {
             update_post_meta($post_id, $field, sanitize_text_field(wp_unslash($_POST[$field])));
@@ -222,6 +242,10 @@ function hse_registration_meta_box_render($post) {
 }
 
 function hse_format_training_date($post_id) {
+    $schedule_text = get_post_meta($post_id, '_hse_schedule_text', true);
+    if ($schedule_text) {
+        return $schedule_text;
+    }
     $start = get_post_meta($post_id, '_hse_start_date', true);
     $end   = get_post_meta($post_id, '_hse_end_date', true);
     if (!$start) {
@@ -236,7 +260,7 @@ function hse_format_training_date($post_id) {
 
 function hse_price_text($post_id) {
     $price = absint(get_post_meta($post_id, '_hse_price', true));
-    return $price ? 'Rp ' . number_format_i18n($price, 0) : __('Hubungi kami', 'hse-training');
+    return $price ? 'Rp ' . number_format($price, 0, ',', '.') : __('Hubungi kami', 'hse-training');
 }
 
 function hse_existing_thumbnail_url($post_id, $size) {
@@ -248,8 +272,12 @@ function hse_existing_thumbnail_url($post_id, $size) {
     return wp_get_attachment_image_url($thumbnail_id, $size);
 }
 
+function hse_direct_whatsapp_url($number, $message) {
+    return 'https://wa.me/' . preg_replace('/\D+/', '', $number) . '?text=' . rawurlencode($message);
+}
+
 function hse_whatsapp_url($message) {
-    return 'https://wa.me/6285774001563?text=' . rawurlencode($message);
+    return add_query_arg(array('hse_chat' => '1', 'topic' => $message), home_url('/'));
 }
 
 function hse_handle_registration() {

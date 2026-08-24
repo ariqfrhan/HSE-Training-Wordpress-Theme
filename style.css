@@ -1,7 +1,7 @@
 /*
 Theme Name: HSE Training Indonesia
 Author: M Ariq Farhan
-Version: 2.0.5
+Version: 2.0.6
 Description: Theme HSE Training Indonesia untuk jadwal, pendaftaran, dan artikel K3.
 Text Domain: hse-training
 */
@@ -187,8 +187,29 @@ address { font-style: normal; }
 .footer-links li + li { margin-top: .65rem; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 2rem; margin-top: 4rem; padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,.16); font-size: .86rem; }
 .footer-bottom p { margin: 0; }
-.whatsapp-float { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40; display: grid; width: 56px; height: 56px; place-items: center; border-radius: 50%; color: #fff; background: #177245; box-shadow: 0 10px 30px rgba(23,114,69,.28); font-size: .9rem; font-weight: 800; text-decoration: none; }
-.whatsapp-float:hover { color: #fff; transform: translateY(-2px); }
+.whatsapp-float { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40; display: grid; width: 58px; height: 58px; padding: 0; place-items: center; overflow: hidden; border: 0; border-radius: 50%; background: #25d366; box-shadow: 0 10px 30px rgba(23,114,69,.28); cursor: pointer; }
+.whatsapp-float img { width: 100%; height: 100%; object-fit: cover; }
+.whatsapp-float:hover { transform: translateY(-2px); }
+.screen-reader-text { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.hse-chat-dialog { position: fixed; inset: auto 1.25rem 5.5rem auto; width: min(420px, calc(100% - 2rem)); max-height: min(680px, calc(100vh - 7rem)); margin: 0; padding: 0; overflow: hidden; border: 1px solid var(--hse-line); border-radius: 18px; color: var(--hse-ink); background: #fff; box-shadow: 0 24px 70px rgba(7,54,94,.25); }
+.hse-chat-dialog::backdrop { background: rgba(7,54,94,.18); }
+.hse-chat-dialog > header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.15rem; color: #fff; background: var(--hse-blue-dark); }
+.hse-chat-dialog > header div { display: grid; gap: .15rem; }
+.hse-chat-dialog > header span { font-size: .75rem; opacity: .78; }
+.hse-chat-dialog > header button { width: 36px; height: 36px; border: 0; border-radius: 50%; color: #fff; background: rgba(255,255,255,.12); font-size: 1.5rem; cursor: pointer; }
+.hse-chat-log { display: flex; min-height: 220px; max-height: 330px; padding: 1rem; overflow-y: auto; flex-direction: column; gap: .7rem; background: var(--hse-bg); }
+.hse-chat-message { max-width: 88%; padding: .75rem .9rem; border-radius: 12px; font-size: .9rem; line-height: 1.5; }
+.hse-chat-message.assistant { align-self: flex-start; border: 1px solid var(--hse-line); background: #fff; }
+.hse-chat-message.user { align-self: flex-end; color: #fff; background: var(--hse-blue); }
+.hse-chat-message a { font-weight: 700; }
+.hse-chat-suggestions { display: flex; gap: .45rem; padding: .75rem 1rem 0; overflow-x: auto; }
+.hse-chat-suggestions button { flex: 0 0 auto; padding: .45rem .65rem; border: 1px solid var(--hse-line); border-radius: 999px; color: var(--hse-blue-dark); background: #fff; font-size: .76rem; cursor: pointer; }
+.hse-chat-form { display: grid; grid-template-columns: 1fr auto; gap: .55rem; padding: .75rem 1rem; }
+.hse-chat-form input { min-width: 0; padding: .7rem .8rem; border: 1px solid #aebdc7; border-radius: 9px; }
+.hse-chat-form button { padding: .7rem 1rem; border: 0; border-radius: 9px; color: #fff; background: var(--hse-blue); font-weight: 700; cursor: pointer; }
+.hse-chat-dialog > footer { display: flex; align-items: center; gap: .5rem; padding: .75rem 1rem 1rem; flex-wrap: wrap; font-size: .78rem; }
+.hse-chat-dialog > footer span { width: 100%; color: var(--hse-muted); }
+.hse-chat-dialog > footer a { padding: .4rem .65rem; border-radius: 7px; color: #fff; background: #128c7e; font-weight: 700; text-decoration: none; }
 
 .content-page { min-height: 60vh; padding: clamp(3.5rem, 7vw, 7rem) 0; background: var(--hse-bg); }
 .page-header { max-width: 840px; margin-bottom: 3rem; }
@@ -280,6 +301,8 @@ address { font-style: normal; }
     .training-facts div:last-child { border-bottom: 0; }
     .empty-state { padding: 2.5rem 1.5rem; }
     .post-navigation .nav-links { flex-direction: column; }
+    .hse-chat-dialog { inset: auto .75rem 5rem .75rem; width: auto; max-height: calc(100vh - 6rem); }
+    .hse-chat-log { max-height: 42vh; }
 }
 
 @media (prefers-reduced-motion: reduce) {

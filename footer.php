@@ -12,6 +12,7 @@
                     Jakasampurna, Kota Bekasi, Jawa Barat
                 </address>
                 <a href="<?php echo esc_url('tel:+62' . '85774001563'); ?>">+62 857-7400-1563</a><br>
+                <a href="<?php echo esc_url('tel:+62' . '85779051699'); ?>">+62 857-7905-1699</a><br>
                 <a href="mailto:info@hse-training.co.id">info@hse-training.co.id</a>
             </div>
             <div>
@@ -37,9 +38,32 @@
         </div>
     </div>
 </footer>
-<a class="whatsapp-float" href="<?php echo esc_url(hse_whatsapp_url('Halo HSE Training Indonesia, saya ingin bertanya mengenai program training.')); ?>" target="_blank" rel="noopener noreferrer" aria-label="Hubungi HSE Training Indonesia melalui WhatsApp">
-    <span aria-hidden="true">WA</span>
-</a>
+<button class="whatsapp-float" id="hse-chat-open" type="button" aria-label="Buka Asisten HSE">
+    <img src="<?php echo esc_url(get_theme_file_uri('/images/whatsapp.svg')); ?>" alt="" width="30" height="30" aria-hidden="true">
+</button>
+<dialog class="hse-chat-dialog" id="hse-chat-dialog" aria-labelledby="hse-chat-title">
+    <header>
+        <div><strong id="hse-chat-title">Asisten HSE</strong><span>Jawaban otomatis dari informasi website</span></div>
+        <button id="hse-chat-close" type="button" aria-label="Tutup chat">&times;</button>
+    </header>
+    <div class="hse-chat-log" id="hse-chat-log" aria-live="polite"></div>
+    <div class="hse-chat-suggestions" aria-label="Pertanyaan cepat">
+        <button type="button" data-chat-question="Jadwal training terdekat">Jadwal terdekat</button>
+        <button type="button" data-chat-question="Berapa harga training?">Harga training</button>
+        <button type="button" data-chat-question="Bagaimana sertifikasi BNSP?">Sertifikasi BNSP</button>
+        <button type="button" data-chat-question="Apakah bisa in-house training?">In-house</button>
+    </div>
+    <form class="hse-chat-form" id="hse-chat-form">
+        <label class="screen-reader-text" for="hse-chat-input">Pertanyaan</label>
+        <input id="hse-chat-input" type="text" maxlength="300" placeholder="Tulis pertanyaan..." autocomplete="off" required>
+        <button type="submit">Kirim</button>
+    </form>
+    <footer>
+        <span>Perlu bantuan lanjutan?</span>
+        <a href="<?php echo esc_url(hse_direct_whatsapp_url('6285774001563', 'Halo HSE Training Indonesia, saya ingin bertanya mengenai program training.')); ?>" target="_blank" rel="noopener noreferrer">WhatsApp 1</a>
+        <a href="<?php echo esc_url(hse_direct_whatsapp_url('6285779051699', 'Halo HSE Training Indonesia, saya ingin bertanya mengenai program training.')); ?>" target="_blank" rel="noopener noreferrer">WhatsApp 2</a>
+    </footer>
+</dialog>
 <?php wp_footer(); ?>
 </body>
 </html>
